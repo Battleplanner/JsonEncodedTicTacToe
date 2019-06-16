@@ -44,7 +44,6 @@ class View:
 
         self.board = background
 
-
     def update_board(self):
         """You guessed it! Updates the surface by redrawing the board onto it. Gets board from Model."""
 

@@ -89,7 +89,7 @@ class Model:
     def cell_occupied(self, row, col):
         """Checks to see if a specified cell is occupied (Necessary in order to only draw if the space is empty"""
         cell = self.grid[col][row]  # Gets the value of the specified cell
-        if cell != None:  # If theh cell is equal to X or O
+        if cell != None:  # If the cell is equal to X or O
             return True
         elif cell == None:  # If the cell is empty
             return False
@@ -104,8 +104,14 @@ class Model:
     def find_cell(self, mouseX, mouseY):
         """Responsible for finding out which board space (i.e row, column) the user clicked in based on
         their mouse coordinates. Requires the coordinates the mouse clicked in."""
-        point = mouseY // self.CELL_DIMENSIONS, mouseX // self.CELL_DIMENSIONS
+        point = [mouseY // self.CELL_DIMENSIONS, mouseX // self.CELL_DIMENSIONS]
 
+        if point[0] > 2 or point[1] < 0:
+            point[0] = None
+            print(point[0])
+        if point[1] > 2 or point[1] < 0:
+            point[1] = None
+            print(point[0])
         """Further information:
         First off, the reason point is in the form Y, X is because X represents the horizontal axis, which is the 
         column, while Y represents the vertical axis, which is the row. For that reason, I'm putting in the format
@@ -114,3 +120,4 @@ class Model:
         Second off, the reason I've divided the coordinate by the cell dimensions (which represent the width and height
         of the cell) is so that I get the middle of the cell."""
         return point  # The point is which row and column the mouse clicked in
+
